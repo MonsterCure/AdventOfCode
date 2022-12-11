@@ -39,7 +39,7 @@ namespace AdventOfCode
             //Day10.Part01and02();
 
             Day11.Part01and02(1, 20, 3); //for part 1
-            Day11.Part01and02(2, 10000, 3); //for part 2
+            Day11.Part01and02(2, 10000, 0); //for part 2
 
 
         }
