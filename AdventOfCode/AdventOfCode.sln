@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode", "AdventOfCode\AdventOfCode.csproj", "{991A0467-8DFD-40CC-8E2A-5D9083BBB2C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC 2022 Solutions", "AoC 2022 Solutions\AoC 2022 Solutions.csproj", "{22BCAF86-7796-4266-9731-50B78E73BFF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AoC 2022 Inputs", "AoC 2022 Inputs", "{4A4E1B22-529B-4D23-9EFE-BA8D1CE502BD}"
+	ProjectSection(SolutionItems) = preProject
+		AoC 2022 Inputs\Day01.txt = AoC 2022 Inputs\Day01.txt
+		AoC 2022 Inputs\Day02.txt = AoC 2022 Inputs\Day02.txt
+		AoC 2022 Inputs\Day03.txt = AoC 2022 Inputs\Day03.txt
+		AoC 2022 Inputs\Day04.txt = AoC 2022 Inputs\Day04.txt
+		AoC 2022 Inputs\Day05.txt = AoC 2022 Inputs\Day05.txt
+		AoC 2022 Inputs\Day06.txt = AoC 2022 Inputs\Day06.txt
+		AoC 2022 Inputs\Day07.txt = AoC 2022 Inputs\Day07.txt
+		AoC 2022 Inputs\Day08.txt = AoC 2022 Inputs\Day08.txt
+		AoC 2022 Inputs\Day09.txt = AoC 2022 Inputs\Day09.txt
+		AoC 2022 Inputs\Day10.txt = AoC 2022 Inputs\Day10.txt
+		AoC 2022 Inputs\Day11.txt = AoC 2022 Inputs\Day11.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{991A0467-8DFD-40CC-8E2A-5D9083BBB2C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{991A0467-8DFD-40CC-8E2A-5D9083BBB2C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{991A0467-8DFD-40CC-8E2A-5D9083BBB2C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{991A0467-8DFD-40CC-8E2A-5D9083BBB2C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22BCAF86-7796-4266-9731-50B78E73BFF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22BCAF86-7796-4266-9731-50B78E73BFF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22BCAF86-7796-4266-9731-50B78E73BFF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22BCAF86-7796-4266-9731-50B78E73BFF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F91F4CA-6E02-4DA0-B316-D9F11360E84A}
+	EndGlobalSection
+EndGlobal
