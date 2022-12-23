@@ -2,7 +2,7 @@
 
 namespace AoC_2022_Solutions
 {
-    public class Day06
+    public class Day06 //--- Day 6: Tuning Trouble ---
     {
         public static void Part01()
         {

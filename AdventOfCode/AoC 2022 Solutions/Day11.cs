@@ -2,7 +2,7 @@
 
 namespace AoC_2022_Solutions
 {
-    public class Day11
+    public class Day11 //--- Day 11: Monkey in the Middle ---
     {
         internal class Item
         {

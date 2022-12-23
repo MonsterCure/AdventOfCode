@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace AoC_2022_Solutions
 {
-    public class Day05
+    public class Day05 //--- Day 5: Supply Stacks ---
     {
         public static void Part01()
         {

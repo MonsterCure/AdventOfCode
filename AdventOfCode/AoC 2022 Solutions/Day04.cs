@@ -2,7 +2,7 @@
 
 namespace AoC_2022_Solutions
 {
-    public class Day04
+    public class Day04 //--- Day 4: Camp Cleanup ---
     {
         public static void Part01()
         {

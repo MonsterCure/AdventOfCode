@@ -2,7 +2,7 @@
 
 namespace AoC_2022_Solutions
 {
-    public class Day01
+    public class Day01 //--- Day 1: Calorie Counting ---
     {
         public static void Part01and02()
         {

@@ -2,7 +2,7 @@
 
 namespace AoC_2022_Solutions
 {
-    public class Day07
+    public class Day07 //--- Day 7: No Space Left On Device ---
     {
         internal class FileObj
         {

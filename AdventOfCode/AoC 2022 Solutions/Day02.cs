@@ -2,7 +2,7 @@
 
 namespace AoC_2022_Solutions
 {
-    public class Day02
+    public class Day02 //--- Day 2: Rock Paper Scissors ---
     {
         public static void Part01()
         {

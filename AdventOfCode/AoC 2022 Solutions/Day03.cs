@@ -2,7 +2,7 @@
 
 namespace AoC_2022_Solutions
 {
-    public class Day03
+    public class Day03 //--- Day 3: Rucksack Reorganization ---
     {
         public static void Part01()
         {

@@ -38,9 +38,26 @@ namespace AdventOfCode
             //Day10.Part01();
             //Day10.Part01and02();
 
-            Day11.Part01and02(1, 20, 3); //for part 1
-            Day11.Part01and02(2, 10000, 0); //for part 2
+            //Day11.Part01and02(1, 20, 3); //for part 1
+            //Day11.Part01and02(2, 10000, 0); //for part 2
 
+            //Day12.Part01and02();
+
+            //Day13.Part01and02();
+
+            //Day14.Part01and02();
+
+            //Day15.Part01and02();
+
+            //Day16.Part01and02();
+
+            //Day17.Part01and02();
+
+            //Day18.Part01and02();
+
+            Day19.Part01and02();
+
+            Test.Solution();
 
         }
     }

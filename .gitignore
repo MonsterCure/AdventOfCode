@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+AdventOfCode/AoC 2022 Inputs/
+AdventOfCode/AoC 2022 Solutions/Test.cs

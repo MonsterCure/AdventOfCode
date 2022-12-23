@@ -2,7 +2,7 @@
 
 namespace AoC_2022_Solutions
 {
-    public class Day10
+    public class Day10 //--- Day 10: Cathode-Ray Tube ---
     {
         public static void Part01()
         {
