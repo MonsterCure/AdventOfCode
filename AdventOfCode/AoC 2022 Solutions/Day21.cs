@@ -120,9 +120,8 @@ namespace AoC_2022_Solutions
                 humnParents.Add((name, counter));
             }
 
-            var rootChild1Name = monkeys.Find(e => e.Name == "root").MonkeyNames.FirstOrDefault(e => e == name);
-            var rootChild1 = monkeys.Find(e => e.Name == rootChild1Name);
-            var rootChild2Name = monkeys.Find(e => e.Name == "root").MonkeyNames.FirstOrDefault(e => e != name);
+            var root = monkeys.Find(e => e.Name == "root");
+            var rootChild2Name = root.MonkeyNames.FirstOrDefault(e => e != name);
             var rootChild2 = monkeys.Find(e => e.Name == rootChild2Name);
             var numberToMatch = rootChild2.Number;
             Int64 newNumber = 0;

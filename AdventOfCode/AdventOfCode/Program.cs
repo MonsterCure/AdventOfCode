@@ -59,7 +59,9 @@ namespace AdventOfCode
 
             //Day20.Part01and02();
 
-            Day21.Part01and02();
+            //Day21.Part01and02();
+
+            Day25.Part01and02();
 
             Test.Solution();
 
