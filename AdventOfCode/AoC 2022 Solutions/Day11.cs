@@ -4,68 +4,62 @@ namespace AoC_2022_Solutions
 {
     public class Day11 //--- Day 11: Monkey in the Middle ---
     {
-        internal class Item
+        public static void Part01and02(int part, int rounds, long worryRelief)
         {
-            public double WorryLevel { get; set; }
-            public void GetNewWorryLevel(long worryRelief, long givenWorryRelief)
-            {
-                WorryLevel = worryRelief == givenWorryRelief ? Math.Floor(WorryLevel / worryRelief) : WorryLevel % worryRelief;
-            }
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
 
-            public Item(double worryLevel)
-            {
-                WorryLevel = worryLevel;
-            }
+            var input = File.ReadAllLines(@"..\..\..\..\AoC 2022 Inputs\Day11.txt");
+
+            List<Monkey> monkeys = GetMonkeys(input);
+
+            //long[] testValues = monkeys.Select(m => (long)m.TestValue).ToArray();
+            //long lcm = LeastCommonMultiple(testValues);
+            long lcm = monkeys.Aggregate(1, (mod, monkey) => mod * monkey.TestValue);
+            long givenWorryRelief = worryRelief;
+            worryRelief = (part == 1) ? worryRelief : lcm;
+
+            PlayKeepAway(ref monkeys, rounds, worryRelief, givenWorryRelief);
+
+            var reorderedMonkeys = monkeys.OrderByDescending(m => m.InspectedItems);
+            long firstMonkey = reorderedMonkeys.ElementAt(0).InspectedItems;
+            long secondMonkey = reorderedMonkeys.ElementAt(1).InspectedItems;
+            long monkeyBusiness = firstMonkey * secondMonkey;
+
+            sw.Stop();
+            Console.WriteLine($"Monkey Business: {firstMonkey} * {secondMonkey} = {monkeyBusiness}\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.ReadKey();
         }
 
-        internal class Monkey
+        internal static void PlayKeepAway(ref List<Monkey> monkeys, int rounds, long worryRelief, long givenWorryRelief)
         {
-            public int MonkeyID { get; set; }
-            public List<Item> Items { get; set; }
-
-            public Func<double, double> operationPredicate;
-
-            public int OperationValue { get; set; }
-
-            public Func<double, bool> testPredicate;
-
-            public int TestValue { get; set; }
-
-            public (int ifTrue, int ifFalse) ThrowTo;
-
-            public int InspectedItems;
-
-            public Monkey(int monkeyID, List<Item> items, Func<double, double> operation, int operationValue, Func<double, bool> test, int testValue, (int ifTrue, int ifFalse) throwTo)
+            for (int i = 0; i < rounds; i++)
             {
-                MonkeyID = monkeyID;
-                Items = items;
-                operationPredicate = operation;
-                OperationValue = operationValue;
-                testPredicate = test;
-                TestValue = testValue;
-                ThrowTo = throwTo;
-            }
+                foreach (var monkey in monkeys)
+                {
+                    List<Item> itemsHelper = new List<Item>();
+                    itemsHelper.AddRange(monkey.Items);
 
-            public double InspectItem(double worryLevel)
-            {
-                return operationPredicate(worryLevel);
-            }
+                    foreach (var item in itemsHelper)
+                    {
+                        item.WorryLevel = monkey.InspectItem(item.WorryLevel);
+                        monkey.InspectedItems++;
+                        item.GetNewWorryLevel(worryRelief, givenWorryRelief);
 
-            public bool ThrowItem(double worryLevel)
-            {
-                return testPredicate(worryLevel);
+                        if (monkey.ThrowItem(item.WorryLevel))
+                        {
+                            monkeys.Single(m => m.MonkeyID == monkey.ThrowTo.ifTrue).Items.Add(item);
+                            monkey.Items.Remove(item);
+                        }
+                        else
+                        {
+                            monkeys.Single(m => m.MonkeyID == monkey.ThrowTo.ifFalse).Items.Add(item);
+                            monkey.Items.Remove(item);
+                        }
+                    }
+                }
             }
         }
-
-        /*internal static long LeastCommonMultiple(long[] numbers)
-        {
-            return numbers.Aggregate((num1, num2) => num1 * num2 / GreatestCommonDivisor(num1, num2));
-        }
-
-        internal static long GreatestCommonDivisor(long num1, long num2)
-        {
-            return (num2 == 0) ? num1 : GreatestCommonDivisor(num2, num1 % num2);
-        }*/
 
         internal static List<Monkey> GetMonkeys(string[] input)
         {
@@ -140,62 +134,68 @@ namespace AoC_2022_Solutions
             return monkeys;
         }
 
-        internal static void PlayKeepAway(ref List<Monkey> monkeys, int rounds, long worryRelief, long givenWorryRelief)
+        /*internal static long LeastCommonMultiple(long[] numbers)
         {
-            for (int i = 0; i < rounds; i++)
+            return numbers.Aggregate((num1, num2) => num1 * num2 / GreatestCommonDivisor(num1, num2));
+        }
+
+        internal static long GreatestCommonDivisor(long num1, long num2)
+        {
+            return (num2 == 0) ? num1 : GreatestCommonDivisor(num2, num1 % num2);
+        }*/
+
+        internal class Monkey
+        {
+            public int MonkeyID { get; set; }
+            public List<Item> Items { get; set; }
+
+            public Func<double, double> operationPredicate;
+
+            public int OperationValue { get; set; }
+
+            public Func<double, bool> testPredicate;
+
+            public int TestValue { get; set; }
+
+            public (int ifTrue, int ifFalse) ThrowTo;
+
+            public int InspectedItems;
+
+            public Monkey(int monkeyID, List<Item> items, Func<double, double> operation, int operationValue, Func<double, bool> test, int testValue, (int ifTrue, int ifFalse) throwTo)
             {
-                foreach (var monkey in monkeys)
-                {
-                    List<Item> itemsHelper = new List<Item>();
-                    itemsHelper.AddRange(monkey.Items);
+                MonkeyID = monkeyID;
+                Items = items;
+                operationPredicate = operation;
+                OperationValue = operationValue;
+                testPredicate = test;
+                TestValue = testValue;
+                ThrowTo = throwTo;
+            }
 
-                    foreach (var item in itemsHelper)
-                    {
-                        item.WorryLevel = monkey.InspectItem(item.WorryLevel);
-                        monkey.InspectedItems++;
-                        item.GetNewWorryLevel(worryRelief, givenWorryRelief);
+            public double InspectItem(double worryLevel)
+            {
+                return operationPredicate(worryLevel);
+            }
 
-                        if (monkey.ThrowItem(item.WorryLevel))
-                        {
-                            monkeys.Single(m => m.MonkeyID == monkey.ThrowTo.ifTrue).Items.Add(item);
-                            monkey.Items.Remove(item);
-                        }
-                        else
-                        {
-                            monkeys.Single(m => m.MonkeyID == monkey.ThrowTo.ifFalse).Items.Add(item);
-                            monkey.Items.Remove(item);
-                        }
-                    }
-                }
+            public bool ThrowItem(double worryLevel)
+            {
+                return testPredicate(worryLevel);
             }
         }
 
-        public static void Part01and02(int part, int rounds, long worryRelief)
+        internal class Item
         {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
+            public double WorryLevel { get; set; }
 
-            var input = File.ReadAllLines(@"..\..\..\..\AoC 2022 Inputs\Day11.txt");
+            public Item(double worryLevel)
+            {
+                WorryLevel = worryLevel;
+            }
 
-            List<Monkey> monkeys = GetMonkeys(input);
-
-            //long[] testValues = monkeys.Select(m => (long)m.TestValue).ToArray();
-            //long lcm = LeastCommonMultiple(testValues);
-            long lcm = monkeys.Aggregate(1, (mod, monkey) => mod * monkey.TestValue);
-            long givenWorryRelief = worryRelief;
-            worryRelief = (part == 1) ? worryRelief : lcm;
-
-            PlayKeepAway(ref monkeys, rounds, worryRelief, givenWorryRelief);
-
-            var reorderedMonkeys = monkeys.OrderByDescending(m => m.InspectedItems);
-            long firstMonkey = reorderedMonkeys.ElementAt(0).InspectedItems;
-            long secondMonkey = reorderedMonkeys.ElementAt(1).InspectedItems;
-            long monkeyBusiness = firstMonkey * secondMonkey;
-
-            Console.WriteLine($"Monkey Business: {firstMonkey} * {secondMonkey} = {monkeyBusiness}\n");
-            sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
-            Console.ReadKey();
+            public void GetNewWorryLevel(long worryRelief, long givenWorryRelief)
+            {
+                WorryLevel = worryRelief == givenWorryRelief ? Math.Floor(WorryLevel / worryRelief) : WorryLevel % worryRelief;
+            }
         }
     }
 }

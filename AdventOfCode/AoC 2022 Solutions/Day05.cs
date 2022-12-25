@@ -55,12 +55,12 @@ namespace AoC_2022_Solutions
             }
 
             string topCrates = "";
+
             foreach (var stack in cratesToRearrange)
                 topCrates += $"{stack.Peek()}";
 
-            Console.WriteLine($"Top crates: {topCrates}\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Top crates: {topCrates}\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 
@@ -120,12 +120,12 @@ namespace AoC_2022_Solutions
             }
 
             string topCrates = "";
+
             foreach (var stack in cratesToRearrange)
                 topCrates += $"{stack.Peek()}";
 
-            Console.WriteLine($"Top crates: {topCrates}\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Top crates: {topCrates}\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
     }

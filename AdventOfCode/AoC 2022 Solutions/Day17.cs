@@ -10,6 +10,7 @@ namespace AoC_2022_Solutions
             sw.Start();
 
             var input = File.ReadAllText(@"..\..\..\..\AoC 2022 Inputs\Day17.txt");
+
             var map = new Dictionary<(int X, int Y), int>();
 
             string[][] blocks = {
@@ -55,20 +56,16 @@ namespace AoC_2022_Solutions
 
             var revisit = new Dictionary<(int Tape, int Shape), (long Rocks, long Height)>();
 
-            bool checkCollision(int bx, int by)
+            bool CheckCollision(int bx, int by)
             {
                 bool ok = true;
 
                 for (int y = by; y < by + current.Length; y++)
-                {
                     for (int x = bx; x < bx + current[y - by].Length; x++)
-                    {
-                        int read = map.ContainsKey((x, y)) ? map[(x, y)] : -1;
                         if (by <= y && y <= by + current.Length - 1 && bx <= x && x <= bx + current[y - by].Length - 1)
-                            if (current[y - by][x - bx] == '#' && read != -1)
+                            if (current[y - by][x - bx] == '#' && map.Read((x, y), -1) != -1)
                                 ok = false;
-                    }
-                }
+
                 return ok;
             }
 
@@ -85,32 +82,24 @@ namespace AoC_2022_Solutions
                     current = blocks[block];
                     isInPlay = true;
                     nth++;
-                    if (nth == 2023)
-                    {
-                        result1 = maxY + 1;
-                    }
+
+                    if (nth == 2023) result1 = maxY + 1;
                 }
 
                 int next = blockX;
-                if (tape[index] == '<')
-                {
-                    next--;
-                }
-                else
-                {
-                    next++;
-                }
-                if (0 <= next && next + current[0].Length <= 7 && checkCollision(next, blockY))
-                {
-                    blockX = next;
-                }
+
+                if (tape[index] == '<') next--;
+                else next++;
+
+                if (0 <= next && next + current[0].Length <= 7 && CheckCollision(next, blockY)) blockX = next;
+
                 index = (index + 1) % tape.Length;
+
                 if (index == 0) repeats++;
+
                 next = blockY - 1;
-                if (0 <= next && checkCollision(blockX, next))
-                {
-                    blockY = next;
-                }
+
+                if (0 <= next && CheckCollision(blockX, next)) blockY = next;
                 else
                 {
                     for (int y = 0; y < blocks[block].Length; y++)
@@ -118,10 +107,13 @@ namespace AoC_2022_Solutions
                         for (int x = 0; x < blocks[block][y].Length; x++)
                         {
                             bool place = blocks[block][y][x] == '#';
+
                             if (place) map[(blockX + x, blockY + y)] = block;
+
                             maxY = Math.Max(maxY, blockY + y);
                         }
                     }
+
                     block = (block + 1) % blocks.Length;
                     isInPlay = false;
 
@@ -132,19 +124,15 @@ namespace AoC_2022_Solutions
                         long adds = maxY + 1 - last.Height;
                         long remaining = 1000000000000 - nth - 1;
                         long combo = (remaining / (cycle) + 1);
-                        if (nth + combo * cycle == 1000000000000)
-                            result2 = maxY + 1 + combo * adds;
+
+                        if (nth + combo * cycle == 1000000000000) result2 = maxY + 1 + combo * adds;
                     }
-                    else
-                    {
-                        revisit[(index, block)] = (nth, maxY + 1);
-                    }
+                    else revisit[(index, block)] = (nth, maxY + 1);
                 }
             }
 
-            Console.WriteLine($"After 2022 rocks, the tower is {result1} units tall.\nAfter a trillion rocks, the tower is {result2} units tall.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"After 2022 rocks, the tower is {result1} units tall.\nAfter a trillion rocks, the tower is {result2} units tall.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
     }

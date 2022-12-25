@@ -24,6 +24,7 @@ namespace AoC_2022_Solutions
                 if (instruction == "noop")
                 {
                     cycle++;
+
                     if ((cycle - 20) % 40 == 0)
                         signalStrength += cycle * register;
                 }
@@ -31,9 +32,11 @@ namespace AoC_2022_Solutions
                 if (instruction == "addx")
                 {
                     value = int.Parse(parsedLine[1]);
+
                     for (int i = 0; i < 2; i++)
                     {
                         cycle++;
+
                         if ((cycle - 20) % 40 == 0)
                             signalStrength += cycle * register;
 
@@ -43,9 +46,8 @@ namespace AoC_2022_Solutions
                 }
             }
 
-            Console.WriteLine($"Sum of the signal strengths: {signalStrength}.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Sum of the signal strengths: {signalStrength}.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 
@@ -89,10 +91,8 @@ namespace AoC_2022_Solutions
                 }
             }
 
-            Console.WriteLine($"Sum of the signal strengths: {signalStrength}.\n");
-            Console.WriteLine($"{draw}\n\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Sum of the signal strengths: {signalStrength}.\n{draw}\n\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
     }

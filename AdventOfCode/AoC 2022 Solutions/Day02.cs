@@ -21,7 +21,6 @@ namespace AoC_2022_Solutions
                 if (ownPlay == "X")
                 {
                     score += 1;
-
                     if (opponentPlay == "A")
                         score += 3;
                     else if (opponentPlay == "C")
@@ -45,9 +44,8 @@ namespace AoC_2022_Solutions
                 }
             }
 
-            Console.WriteLine($"Your Rock Paper Scissors score is {score}.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Your Rock Paper Scissors score is {score}.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 
@@ -96,9 +94,8 @@ namespace AoC_2022_Solutions
                 }
             }
 
-            Console.WriteLine($"Your Rock Paper Scissors score is {score}.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Your Rock Paper Scissors score is {score}.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
     }

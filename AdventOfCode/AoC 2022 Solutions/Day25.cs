@@ -2,7 +2,7 @@
 
 namespace AoC_2022_Solutions
 {
-    public class Day25
+    public class Day25 //--- Day 25: Full of Hot Air ---
     {
         public static void Part01and02()
         {
@@ -10,6 +10,7 @@ namespace AoC_2022_Solutions
             sw.Start();
 
             var input = File.ReadAllLines(@"..\..\..\..\AoC 2022 Inputs\Day25.txt").ToList();
+
             var numbers = new List<Int64>();
 
             for (int i = 0; i < input.Count; i++)

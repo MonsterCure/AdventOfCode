@@ -10,14 +10,17 @@ namespace AoC_2022_Solutions
             sw.Start();
 
             var input = File.ReadAllLines(@"..\..\..\..\AoC 2022 Inputs\Day15.txt").ToList();
+
             var sensors = new HashSet<(int x, int y)>();
             var beacons = new HashSet<(int x, int y)>();
             var noBeacons = new HashSet<(int x, int y)>();
             var diamonds = new List<(int x, int y, int r)>();
             var possiblePositions = new HashSet<(int x, int y)>();
+
             const int ROW = 2000000;
             const int GRID_START = 0;
             const int GRID_END = 4000000;
+
             Int64 tuningFrequency = 0;
 
             var parsedCoordinates = (
@@ -103,9 +106,8 @@ namespace AoC_2022_Solutions
                     tuningFrequency = (Int64)point.x * 4000000L + (Int64)point.y;
             }
 
-            Console.WriteLine($"Positions that can't contain a beacon: {noBeacons.Count}\nThe tuning frequency of the distress beacon: {tuningFrequency}\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Positions that can't contain a beacon: {noBeacons.Count}\nThe tuning frequency of the distress beacon: {tuningFrequency}\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
     }

@@ -11,6 +11,7 @@ namespace AoC_2022_Solutions
             sw.Start();
 
             var input = File.ReadAllLines(@"..\..\..\..\AoC 2022 Inputs\Day14.txt").ToList();
+
             Dictionary<Complex, char> caveMap = new Dictionary<Complex, char>();
 
             foreach (var line in input)
@@ -38,9 +39,8 @@ namespace AoC_2022_Solutions
             var result1 = SimulateFallingSand(caveMap, new Complex(500, 0), limit, false);
             var result2 = SimulateFallingSand(caveMap, new Complex(500, 0), limit, true);
 
-            Console.WriteLine($"Units of sand with abyss: {result1}\nUnits of sand with floor: {result2}.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Units of sand with abyss: {result1}\nUnits of sand with floor: {result2}.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 

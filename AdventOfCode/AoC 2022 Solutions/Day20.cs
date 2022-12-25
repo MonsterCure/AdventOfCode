@@ -14,9 +14,8 @@ namespace AoC_2022_Solutions
             var result1 = Mixing(input);
             var result2 = Mixing(input, 811589153L, 10);
 
-            Console.WriteLine($"Sum of the grove coordinates:\npart 1: {result1} | part 2: {result2}\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Sum of the grove coordinates:\npart 1: {result1} | part 2: {result2}\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 
@@ -40,8 +39,7 @@ namespace AoC_2022_Solutions
 
                     var newIndex = (oldIndex + number.value) % (count - 1);
 
-                    if (newIndex < 0)
-                        newIndex = count + newIndex - 1;
+                    if (newIndex < 0) newIndex = count + newIndex - 1;
 
                     listToMix.Remove(number);
                     listToMix.Insert((int)newIndex, number);

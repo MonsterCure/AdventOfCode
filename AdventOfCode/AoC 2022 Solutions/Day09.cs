@@ -59,9 +59,8 @@ namespace AoC_2022_Solutions
                 }
             }
 
-            Console.WriteLine($"Positions visited with a 2-knots rope: {ropeOneTailVisitedPositions.Count}\nPositions visited with a 10-knots rope: {ropeTwoTailVisitedPositions.Count}.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Positions visited with a 2-knots rope: {ropeOneTailVisitedPositions.Count}\nPositions visited with a 10-knots rope: {ropeTwoTailVisitedPositions.Count}.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
     }

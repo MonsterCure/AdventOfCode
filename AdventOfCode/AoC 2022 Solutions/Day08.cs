@@ -23,16 +23,14 @@ namespace AoC_2022_Solutions
                     Tuple<bool, int> tuple = GetVisibilityAndScenicScore(input, row, column);
                     bool isVisible = tuple.Item1;
 
-                    if (isVisible)
-                        visibleTrees++;
+                    if (isVisible) visibleTrees++;
 
                     highestScenicScore = Math.Max(highestScenicScore, tuple.Item2);
                 }
             }
 
-            Console.WriteLine($"Visible trees: {visibleTrees} | Highest scenic score: {highestScenicScore}.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Visible trees: {visibleTrees} | Highest scenic score: {highestScenicScore}.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
         internal static Tuple<bool, int> GetVisibilityAndScenicScore(string[] treePatch, int x, int y)
@@ -56,6 +54,7 @@ namespace AoC_2022_Solutions
             for (int row = x - 1; row >= 0; row--)
             {
                 clearLineLength++;
+
                 if (treePatch.ElementAt(row).ElementAt(y) >= treePatch.ElementAt(x).ElementAt(y))
                 {
                     isLineClear = false;
@@ -72,6 +71,7 @@ namespace AoC_2022_Solutions
             for (int row = x + 1; row < patchLength; row++)
             {
                 clearLineLength++;
+
                 if (treePatch.ElementAt(row).ElementAt(y) >= treePatch.ElementAt(x).ElementAt(y))
                 {
                     isLineClear = false;
@@ -88,6 +88,7 @@ namespace AoC_2022_Solutions
             for (int column = y + 1; column < patchWidth; column++)
             {
                 clearLineLength++;
+
                 if (treePatch.ElementAt(x).ElementAt(column) >= treePatch.ElementAt(x).ElementAt(y))
                 {
                     isLineClear = false;
@@ -104,6 +105,7 @@ namespace AoC_2022_Solutions
             for (int column = y - 1; column >= 0; column--)
             {
                 clearLineLength++;
+
                 if (treePatch.ElementAt(x).ElementAt(column) >= treePatch.ElementAt(x).ElementAt(y))
                 {
                     isLineClear = false;

@@ -10,6 +10,7 @@ namespace AoC_2022_Solutions
             sw.Start();
 
             var input = File.ReadAllLines(@"..\..\..\..\AoC 2022 Inputs\Day21.txt");
+
             List<Monkey> monkeys = new List<Monkey>();
 
             for (int i = 0; i < input.Length; i++)
@@ -53,9 +54,8 @@ namespace AoC_2022_Solutions
 
             var newHumnNumber = GetHumnNumber(monkeys);
 
-            Console.WriteLine($"The monkey named \"root\" will yell: {rootNumber}\nThe new humn number is: {newHumnNumber}\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"The monkey named \"root\" will yell: {rootNumber}\nThe new humn number is: {newHumnNumber}\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 

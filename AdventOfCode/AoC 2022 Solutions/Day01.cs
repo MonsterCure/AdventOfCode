@@ -42,9 +42,8 @@ namespace AoC_2022_Solutions
                 elfSnacks.Remove(elfSnacks.Max());
             }
 
-            Console.WriteLine($"The top three elves are carrying {topElvesSnacksTotal} calories.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"The top three elves are carrying {topElvesSnacksTotal} calories.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
     }

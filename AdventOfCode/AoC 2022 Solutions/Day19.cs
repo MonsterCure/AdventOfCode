@@ -11,31 +11,33 @@ namespace AoC_2022_Solutions
             sw.Start();
 
             var input = File.ReadAllLines(@"..\..\..\..\AoC 2022 Inputs\Day19.txt").ToList();
-            var Blueprints = new List<Blueprint>();
+
+            var blueprints = new List<Blueprint>();
 
             foreach (var line in input)
             {
                 var blueprintData = Regex.Matches(line, "-?\\d+").Select(e => int.Parse(e.Value)).ToArray();
-                Blueprints.Add(new Blueprint(blueprintData));
+                blueprints.Add(new Blueprint(blueprintData));
             }
 
             var qualityLevel = 0;
-            foreach (var blueprint in Blueprints)
+
+            foreach (var blueprint in blueprints)
             {
                 var geodeCount = GetMaxOpenedGeodes(blueprint, 24);
                 qualityLevel += blueprint.ID * geodeCount;
             }
 
             var maxGeodes = 1;
-            foreach (var blueprint in Blueprints.Take(3))
+
+            foreach (var blueprint in blueprints.Take(3))
             {
                 var geodeCount = GetMaxOpenedGeodes(blueprint, 32);
                 maxGeodes *= geodeCount;
             }
 
-            Console.WriteLine($"Quality level of all blueprints: {qualityLevel}\nMax geodes with first three blueprints: {maxGeodes}\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Quality level of all blueprints: {qualityLevel}\nMax geodes with first three blueprints: {maxGeodes}\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 
@@ -154,18 +156,8 @@ namespace AoC_2022_Solutions
                 ClayRobot = values[2];
                 ObsidianRobot = (values[3], values[4]);
                 GeodeCracker = (values[5], values[6]);
-                MaxOre = MaxOfMany(OreRobot, ClayRobot, ObsidianRobot.ore, GeodeCracker.ore);
+                MaxOre = Helper.MaxOfMany(OreRobot, ClayRobot, ObsidianRobot.ore, GeodeCracker.ore);
             }
-        }
-
-        public static int MaxOfMany(params int[] items)
-        {
-            int result = items[0];
-
-            for (int i = 1; i < items.Length; i++)
-                result = Math.Max(result, items[i]);
-
-            return result;
         }
     }
 }

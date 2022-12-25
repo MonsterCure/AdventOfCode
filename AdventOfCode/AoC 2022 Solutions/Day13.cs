@@ -41,9 +41,8 @@ namespace AoC_2022_Solutions
             int divider2Index = packets.IndexOf(dividerPacket2) + 1;
             int decoderKey = divider1Index * divider2Index;
 
-            Console.WriteLine($"Sum of indices of pairs in order: {indicesInOrderSum}\nDecoder key: {decoderKey}\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"Sum of indices of pairs in order: {indicesInOrderSum}\nDecoder key: {decoderKey}\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 
@@ -83,6 +82,7 @@ namespace AoC_2022_Solutions
                     integers.Add(null);
                 }
             }
+
             return integers;
         }
 
@@ -105,19 +105,16 @@ namespace AoC_2022_Solutions
 
                 while (index < leftList.Count)
                 {
-                    if (index >= rightList.Count)
-                        return -1;
+                    if (index >= rightList.Count) return -1;
 
                     int current = CompareValues(leftList[index], rightList[index]);
 
-                    if (current != 0)
-                        return current;
+                    if (current != 0) return current;
 
                     index++;
                 }
 
-                if (leftList.Count < rightList.Count)
-                    return 1;
+                if (leftList.Count < rightList.Count) return 1;
             }
             else
             {

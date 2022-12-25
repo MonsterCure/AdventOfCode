@@ -31,9 +31,8 @@ namespace AoC_2022_Solutions
                 prioritiesSum += GetItemPriority(repeatedItem);
             }
 
-            Console.WriteLine($"The sum of the priorities is {prioritiesSum}.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"The sum of the priorities is {prioritiesSum}.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 
@@ -65,9 +64,8 @@ namespace AoC_2022_Solutions
                 prioritiesSum += GetItemPriority(repeatedItem);
             }
 
-            Console.WriteLine($"The sum of the priorities is {prioritiesSum}.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"The sum of the priorities is {prioritiesSum}.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 
@@ -117,12 +115,12 @@ namespace AoC_2022_Solutions
                         break;
                     }
                 }
+
                 prioritiesSum += GetItemPriority(repeatedItem);
             }
 
-            Console.WriteLine($"The sum of the priorities between groups of three elves is {prioritiesSum}.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"The sum of the priorities between groups of three elves is {prioritiesSum}.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 

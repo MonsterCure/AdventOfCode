@@ -10,6 +10,7 @@ namespace AoC_2022_Solutions
             sw.Start();
 
             var input = File.ReadAllLines(@"..\..\..\..\AoC 2022 Inputs\Day12.txt");
+
             int mapHeight = input.Length;
             int mapWidth = input[0].Trim().Length;
             var heightmap = new int[mapHeight, mapWidth];
@@ -39,9 +40,8 @@ namespace AoC_2022_Solutions
             int fewestStepsFromStart = GetShortestPath(heightmap, start, end, true);
             int fewestStepsOverall = GetShortestPath(heightmap, start, end, false);
 
-            Console.WriteLine($"The fewest steps from the starting position: {fewestStepsFromStart}\nThe fewest steps from any lowest position: {fewestStepsOverall}.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"The fewest steps from the starting position: {fewestStepsFromStart}\nThe fewest steps from any lowest position: {fewestStepsOverall}.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 

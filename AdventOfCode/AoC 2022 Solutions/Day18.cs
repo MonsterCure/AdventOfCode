@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AoC_2022_Solutions
 {
@@ -16,6 +11,7 @@ namespace AoC_2022_Solutions
             sw.Start();
 
             var input = File.ReadAllLines(@"..\..\..\..\AoC 2022 Inputs\Day18.txt").ToList();
+
             var cubes = new HashSet<Vector3>();
 
             foreach (var line in input)
@@ -31,9 +27,8 @@ namespace AoC_2022_Solutions
             var waterLocations = FillWithWater(bounds.Min, bounds, cubes);
             var exteriorArea = cubes.SelectMany(c => GetNeighbours(c)).Count(c => waterLocations.Contains(c));
 
-            Console.WriteLine($"The surface area of the scanned lava droplet is {dropletArea}.\nThe exterior surface area of your scanned lava droplet is {exteriorArea}.\n");
             sw.Stop();
-            Console.WriteLine($"Time elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
+            Console.WriteLine($"The surface area of the scanned lava droplet is {dropletArea}.\nThe exterior surface area of your scanned lava droplet is {exteriorArea}.\nTime elapsed: {sw.Elapsed.Milliseconds}ms.\n\n");
             Console.ReadKey();
         }
 
