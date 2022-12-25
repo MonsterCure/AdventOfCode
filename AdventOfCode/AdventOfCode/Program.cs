@@ -26,7 +26,7 @@ namespace AdventOfCode
             //Day06.Part01();
             //Day06.Part02();
             //Day06.Part01and02(4); //for part 1
-            //Day06.Part01and02(14);
+            //Day06.Part01and02(14); //for part 2
 
             //Day07.Part01and02();
 
@@ -55,7 +55,11 @@ namespace AdventOfCode
 
             //Day18.Part01and02();
 
-            Day19.Part01and02();
+            //Day19.Part01and02();
+
+            //Day20.Part01and02();
+
+            Day21.Part01and02();
 
             Test.Solution();
 
